@@ -5,22 +5,21 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "node --experimental-sqlite src/app.js",
+    "dev": "nodemon --exec 'node --experimental-sqlite' src/app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "better-sqlite3": "^12.9.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "node-gyp": "^12.2.0",
     "nodemon": "^3.1.14"
   }
 }
-
