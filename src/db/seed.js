@@ -10,6 +10,22 @@ const DB_PATH = process.env.DB_PATH
 
 const db = new DatabaseSync(DB_PATH);
 
+db.exec(`
+  CREATE TABLE IF NOT EXISTS profiles (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    gender TEXT NOT NULL,
+    gender_probability REAL NOT NULL,
+    sample_size INTEGER NOT NULL DEFAULT 0,
+    age INTEGER NOT NULL,
+    age_group TEXT NOT NULL,
+    country_id TEXT NOT NULL,
+    country_name TEXT NOT NULL DEFAULT '',
+    country_probability REAL NOT NULL,
+    created_at TEXT NOT NULL
+  )
+`);
+
 const { profiles } = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "../../seed_profiles.json"), "utf-8"),
 );
